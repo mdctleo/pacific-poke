@@ -25,7 +25,7 @@ Then run `./init_mysql.sh` to create the initial docker container database and p
 
 After set up, you can run `./login.sh` to connect to the database at any time. Useful for developing and debugging.
 
-### Develpoing the Java code
+### Developing the Java code
 You should be able to import this project ([Intellij](https://www.jetbrains.com/idea/) reccomended) and run the application.
 
 Make sure your database is running: `docker ps` to check, `docker start ppdb` to start it.
