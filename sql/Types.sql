@@ -13,7 +13,4 @@ INSERT INTO Types (TypeName) VALUES
 ('Bug'),
 ('Rock'),
 ('Ghost'),
-('Dragon'),
-('Dark'),
-('Steel'),
-('Fairy');
+('Dragon');
