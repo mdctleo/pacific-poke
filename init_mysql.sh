@@ -7,7 +7,7 @@ mkdir -p $DATA_DIR
 docker run -d --name ppdb -p 3306:3306 -v $DATA_DIR:/var/lib/mysql \
     -e MYSQL_ROOT_PASSWORD=root \
     -e MYSQL_DATABASE=pacificpoke \
-    mysql
+    mysql:5.6
 
 while ! mysqladmin ping --user=root --password=root -h 127.0.0.1 -s; do
     sleep 1
