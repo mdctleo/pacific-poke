@@ -41,9 +41,9 @@
 049,Nugget,Sell for money,NULL
 070,Oak's Parcel,Give to Professor Oak in exchange for Pokedex,NULL
 031,Old Amber,Used for cloning Aerodactyl in Cinnabar Island lab,NULL
-076,Old Rod,Fish for lowNULLlevel Pokemon,NULL
+076,Old Rod,Fish for low-level Pokemon,NULL
 015,Paralyze Heal,Cure Paralyze status,200
-004,Poke Ball,Capture lowNULLlevel Pokemon,200
+004,Poke Ball,Capture low-level Pokemon,200
 051,Poke Doll,Escape from battle. Exchange for TM 31 in Saffron City,1000
 073,Poke Flute,Cures Sleep status and wakes up Snorlax,NULL
 020,Potion,Recover 20 HP,300
@@ -59,10 +59,10 @@
 061,Soda Pop,Recovers 60 HP,300
 019,Super Potion,Recovers 70 HP,700
 056,Super Repel,Protect from  wild Pokemon ambush for 200 steps,500
-078,Super Rod,Fish for lowNULL to highNULLlevel Pokemon,NULL
+078,Super Rod,Fish for low-level to high-level Pokemon,NULL
 033,Thunder Stone,Used to evolve Pikachu and Eevee,2100
 005,Town Map,Map of the island. Shows your location,NULL
-002,Ultra Ball,Capture highNULLlevel Pokemon,1200
+002,Ultra Ball,Capture high-level Pokemon,1200
 034,Water Stone,"Used to evolve Poliwhirl, Shellder, Staryu and Eeve",2100
 046,X Accuracy,Temporarily raise Accuracy in battle,950
 065,X Attack,Temporarily raise Attack in battle,500

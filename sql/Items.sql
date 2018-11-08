@@ -26,9 +26,9 @@ SET time_zone = "+00:00";
 
 INSERT INTO `Items` (`IID`, `ItemName`, `Effect`, `Cost`) VALUES
 (1, 'Master Ball', 'Captures any Pokemon (only one exists)', NULL),
-(2, 'Ultra Ball', 'Capture highNULLlevel Pokemon', 1200),
+(2, 'Ultra Ball', 'Capture high-level Pokemon', 1200),
 (3, 'Great Ball', 'Capture medium level Pokemon', 600),
-(4, 'Poke Ball', 'Capture lowNULLlevel Pokemon', 200),
+(4, 'Poke Ball', 'Capture low-level Pokemon', 200),
 (5, 'Town Map', 'Map of the island. Shows your location', NULL),
 (6, 'Bicycle', 'Travel at double speed', 0),
 (8, 'Safari Ball', 'Capture Pokemon in Safari Zone', NULL),
@@ -88,9 +88,9 @@ INSERT INTO `Items` (`IID`, `ItemName`, `Effect`, `Cost`) VALUES
 (73, 'Poke Flute', 'Cures Sleep status and wakes up Snorlax', NULL),
 (74, 'Lift Key', 'Used to unlock elevators in Rocket Hideout (Celadon)', NULL),
 (75, 'EXP. All', 'Automaticall divides up EXP gained in battle  to whole party', NULL),
-(76, 'Old Rod', 'Fish for lowNULLlevel Pokemon', NULL),
+(76, 'Old Rod', 'Fish for low-level Pokemon', NULL),
 (77, 'Good Rod', 'Fish for medium level Pokemon', NULL),
-(78, 'Super Rod', 'Fish for lowNULL to highNULLlevel Pokemon', NULL),
+(78, 'Super Rod', 'Fish for low-level to high-level Pokemon', NULL),
 (79, 'PP Up', 'Boosts maximum PP', NULL),
 (80, 'Ether', 'Restore 10 PP (one technique)', NULL),
 (81, 'Max Ether', 'Restores PP to one technique', NULL),
