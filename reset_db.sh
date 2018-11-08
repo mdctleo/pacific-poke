@@ -8,3 +8,4 @@ mysql -h 127.0.0.1 --user root --password=root pacificpoke < sql/Moves.sql
 mysql -h 127.0.0.1 --user root --password=root pacificpoke < sql/Pokemon.sql
 mysql -h 127.0.0.1 --user root --password=root pacificpoke < sql/Items.sql
 mysql -h 127.0.0.1 --user root --password=root pacificpoke < sql/Stone.sql
+mysql -h 127.0.0.1 --user root --password=root pacificpoke < sql/Locations.sql
