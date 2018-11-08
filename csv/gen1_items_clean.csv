@@ -1,0 +1,71 @@
+011,Antidote,Cure Poison status,100
+014,Awakening,Cure Sleep status,200
+006,Bicycle,Travel at double speed,Voucher
+045,Bike Voucher,Redeem at Cerulean Bike Shop for free bike,NULL
+012,Burn Heal,Cure Burn status,250
+039,Calcium,Boost Special stat,9800
+038,Carbos,Boost Speed stat,9800
+048,Card Key,Unlock Silph Co. doors,NULL
+059,Coin,Used to lay slots,NULL
+069,Coin Case,"Holds up to 9,999 Casino coins",NULL
+058,Dire Hit,Temporarily raises likelihood of Critical Hit in battle,650
+041,Dome Fossil,Used for cloning Kabuto in Cinnabar Island Lab,NULL
+082,Elixir,Restores 10 PP (all techniques),NULL
+029,Escape Rope,Teleport to last visited Pokemon Center,550
+080,Ether,Restore 10 PP (one technique),NULL
+075,EXP. All,Automaticall divides up EXP gained in battle  to whole party,NULL
+032,Fire Stone,"Use to evolve Growlithe, Vulpix and Eevee",2100
+060,Fresh Water,Restores 50 HP,200
+052,Full Heal,Cures all status changes,600
+016,Full Restore,Cures all status changes and restores all HP,3000
+064,Gold Teeth,Give to Safari Zone Warden for HM 04,NULL
+077,Good Rod,Fish for medium level Pokemon,NULL
+003,Great Ball,Capture medium level Pokemon,600
+055,Guard Spec.,Protects temporarily from Special attack,700
+042,Helix Fossil,Used for cloning Omanyte in Cinnabar Island Lab,NULL
+035,HP Up,Boosts HP Max,9800
+018,Hyper Potion,Recover 200 HP,1500
+013,Ice Heal,Cures Frozen status,250
+037,Iron,Boosts Defense stat,9800
+071,Item Finder,Reveals hidden items,NULL
+047,Leaf Stone,"Used to evolve Gloom, Weepinbell and Exeggcute",2100
+062,Lemonade,Recovers 80 HP,350
+074,Lift Key,Used to unlock elevators in Rocket Hideout (Celadon),NULL
+001,Master Ball,Captures any Pokemon (only one exists),NULL
+083,Max Elixir,Restores PP to all techniques,NULL
+081,Max Ether,Restores PP to one technique,NULL
+017,Max Potion,Recover all HP,2500
+057,Max Repel,Protect from wild Pokemon ambush for 250 steps,700
+054,Max Revive,Recovers fainted Pokemon to full health,NULL
+010,Moon Stone,"Used to evolve Nidorino, Nidorina, Clefairy and Jigglypuff",NULL
+049,Nugget,Sell for money,NULL
+070,Oak's Parcel,Give to Professor Oak in exchange for Pokedex,NULL
+031,Old Amber,Used for cloning Aerodactyl in Cinnabar Island lab,NULL
+076,Old Rod,Fish for lowNULLlevel Pokemon,NULL
+015,Paralyze Heal,Cure Paralyze status,200
+004,Poke Ball,Capture lowNULLlevel Pokemon,200
+051,Poke Doll,Escape from battle. Exchange for TM 31 in Saffron City,1000
+073,Poke Flute,Cures Sleep status and wakes up Snorlax,NULL
+020,Potion,Recover 20 HP,300
+079,PP Up,Boosts maximum PP,NULL
+036,Protein,Boosts Attack stat,9800
+040,Rare Candy,Instant level gain,NULL
+030,Repel,Protect from weak wild Pokemon ambush for 100 steps,350
+053,Revive,Recovers fainted Pokemon to 1/2 health,1500
+063,S.S. Ticket,Entrance ticket to S.S. Anne (Vermilion),NULL
+008,Safari Ball,Capture Pokemon in Safari Zone,NULL
+043,Secret Key,Unlocks Cinnabar Island Gym,NULL
+072,Silph Scope,Makes ghosts visible (Pokemon Tower),NULL
+061,Soda Pop,Recovers 60 HP,300
+019,Super Potion,Recovers 70 HP,700
+056,Super Repel,Protect from  wild Pokemon ambush for 200 steps,500
+078,Super Rod,Fish for lowNULL to highNULLlevel Pokemon,NULL
+033,Thunder Stone,Used to evolve Pikachu and Eevee,2100
+005,Town Map,Map of the island. Shows your location,NULL
+002,Ultra Ball,Capture highNULLlevel Pokemon,1200
+034,Water Stone,"Used to evolve Poliwhirl, Shellder, Staryu and Eeve",2100
+046,X Accuracy,Temporarily raise Accuracy in battle,950
+065,X Attack,Temporarily raise Attack in battle,500
+066,X Defend,Temporarily raise Defense in battle,550
+068,X Special,Temporarily raise Special in battle,350
+067,X Speed,Temporarily raise Speed in battle,350

@@ -6,3 +6,5 @@ mysql -h 127.0.0.1 --user root --password=root pacificpoke < sql/create_tables.s
 mysql -h 127.0.0.1 --user root --password=root pacificpoke < sql/Types.sql
 mysql -h 127.0.0.1 --user root --password=root pacificpoke < sql/Moves.sql
 mysql -h 127.0.0.1 --user root --password=root pacificpoke < sql/Pokemon.sql
+mysql -h 127.0.0.1 --user root --password=root pacificpoke < sql/Items.sql
+mysql -h 127.0.0.1 --user root --password=root pacificpoke < sql/Stone.sql
