@@ -67,19 +67,18 @@ CREATE TABLE Encounters(
 );
 
 CREATE TABLE Buildings(
-    BID INTEGER,
-    Description VARCHAR(500) NOT NULL,
+    BuildingName VARCHAR(50),
     LocationName VARCHAR(50) NOT NULL,
-    PRIMARY KEY (BID),
+    PRIMARY KEY (BuildingName),
     FOREIGN KEY (LocationName) REFERENCES Locations(LocationName)
 );
 
 CREATE TABLE Gym(
-    BID INTEGER,
+    BuildingName VARCHAR(50),
     BadgeName VARCHAR(50) UNIQUE NOT NULL,
     LeaderName VARCHAR(50) UNIQUE NOT NULL,
-    PRIMARY KEY (BID),
-    FOREIGN KEY (BID) REFERENCES Buildings(BID)
+    PRIMARY KEY (BuildingName),
+    FOREIGN KEY (BuildingName) REFERENCES Buildings(BuildingName)
 );
 
 CREATE TABLE Items(
@@ -91,17 +90,17 @@ CREATE TABLE Items(
 );
 
 CREATE TABLE Pokemart(
-    BID INTEGER,
-    PRIMARY KEY (BID),
-    FOREIGN KEY (BID) REFERENCES Buildings(BID)
+    BuildingName VARCHAR(50),
+    PRIMARY KEY (BuildingName),
+    FOREIGN KEY (BuildingName) REFERENCES Buildings(BuildingName)
 );
 
 CREATE TABLE PokemartSellsItems(
     IID INTEGER,
-    BID INTEGER,
-    PRIMARY KEY (IID, BID),
+    BuildingName VARCHAR(50),
+    PRIMARY KEY (IID, BuildingName),
     FOREIGN KEY (IID) REFERENCES Items(IID),
-    FOREIGN KEY (BID) REFERENCES Pokemart(BID)
+    FOREIGN KEY (BuildingName) REFERENCES Pokemart(BuildingName)
 );
 
 CREATE TABLE Stone(
