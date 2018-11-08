@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.6
+    environment:
+      - MYSQL_DATABASE=pacificpoke
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./dbdata:/var/lib/mysql
+    ports:
+      - "3306:3306"
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_ARBITRARY: 1
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "80:80"
+    links:
+      - "db:db"
