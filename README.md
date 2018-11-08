@@ -47,8 +47,3 @@ docker-compose down          # to destroy the containers
 docker-compose logs --follow # tail the container logs
 docker-compose ps -a         # see the status of your containers
 ```
-
-### Developing the Java code
-You should be able to import this project ([Intellij](https://www.jetbrains.com/idea/) reccomended) and run the application.
-
-Make sure your database is running: `docker ps` to check, `docker start ppdb` to start it.
