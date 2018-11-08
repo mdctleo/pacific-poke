@@ -12,7 +12,7 @@ Pokemon database for UBC's CPSC 304 Project.
 ## Getting Started
 
 ### Setting up your local database
-Developing requires a `mysql` client and `docker` to create a local database container.
+Developing requires `mysql`, `docker`, `docker-compose` to create a local database container.
 
 On mac, install them via [Homebrew](https://brew.sh/) by running:
 
@@ -22,13 +22,31 @@ brew cask install docker
 # Note: You'll need to open up the Docker app Homebrew installed to set it up
 ```
 
-After all the tools are installed, at the root of this repository, run:
+After installing the tools, at the root of this repository, run:
 ```sh
-# to create the initial docker container database and populate it
-./init_mysql.sh
+# Initialize and start mysql on :3306 and phpmyadmin on :80
+docker-compose up -d
 ```
 
-After setting up, you can run `./login.sh` to connect to the database. Useful for developing and debugging.
+Then once mysql is accepting connections, run:
+```sh
+# Resets the database tables with initial data
+./reset_db.sh
+```
+
+After setting up, you can
+
+1. visit http://localhost/ to manage your database using phpmyadmin.
+1. or run `./login.sh` to connect to the database via your `mysql` client.
+
+Here are some useful commands:
+```sh
+docker-compose start         # start the containers
+docker-compose stop          # stop the containers
+docker-compose down          # to destroy the containers
+docker-compose logs --follow # tail the container logs
+docker-compose ps -a         # see the status of your containers
+```
 
 ### Developing the Java code
 You should be able to import this project ([Intellij](https://www.jetbrains.com/idea/) reccomended) and run the application.
