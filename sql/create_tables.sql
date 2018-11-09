@@ -46,7 +46,7 @@ CREATE TABLE PokemonHasMoves(
 CREATE TABLE PokemonEvolvesTo(
     EvolveToPID INTEGER,
     EvolveFromPID INTEGER NOT NULL,
-    AtLevel INTEGER NOT NULL,
+    AtLevel INTEGER,
     PRIMARY KEY (EvolveToPID),
     FOREIGN KEY (EvolveFromPID) REFERENCES Pokemon(PID),
     FOREIGN KEY (EvolveToPID) REFERENCES Pokemon(PID)
