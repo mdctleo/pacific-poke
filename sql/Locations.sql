@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Nov 08, 2018 at 05:40 PM
+-- Generation Time: Nov 13, 2018 at 05:28 AM
 -- Server version: 5.6.42
 -- PHP Version: 7.2.8
 
@@ -26,13 +26,20 @@ SET time_zone = "+00:00";
 
 INSERT INTO `Locations` (`LocationName`) VALUES
 ('Celadon City'),
+('Cerulean Cave'),
 ('Cerulean City'),
 ('Cinnabar Island'),
+('Digletts Cave'),
 ('Fuchsia City'),
 ('Indigo Plateau'),
 ('Lavender Town'),
+('Mt Moon'),
 ('Pallet Town'),
 ('Pewter City'),
+('Pokemon Mansion'),
+('Pokemon Tower'),
+('Power Plant'),
+('Rock Tunnel'),
 ('Route 1'),
 ('Route 10'),
 ('Route 11'),
@@ -58,9 +65,15 @@ INSERT INTO `Locations` (`LocationName`) VALUES
 ('Route 7'),
 ('Route 8'),
 ('Route 9'),
+('Safari Zone'),
 ('Saffron City'),
+('Seafoam Islands'),
+('Silph Co'),
+('Underground Path 5-6'),
 ('Vermilion City'),
-('Viridian City');
+('Victory Road'),
+('Viridian City'),
+('Viridian Forest');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
