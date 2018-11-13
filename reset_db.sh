@@ -16,3 +16,4 @@ mysql -h 127.0.0.1 --user root --password=root pacificpoke < sql/Gyms.sql
 mysql -h 127.0.0.1 --user root --password=root pacificpoke < sql/Pokemart.sql
 mysql -h 127.0.0.1 --user root --password=root pacificpoke < sql/PokemartSellsItems.sql
 mysql -h 127.0.0.1 --user root --password=root pacificpoke < sql/StoneEvolutions.sql
+mysql -h 127.0.0.1 --user root --password=root pacificpoke < sql/Encounters.sql

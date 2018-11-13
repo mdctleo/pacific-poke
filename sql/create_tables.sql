@@ -60,7 +60,7 @@ CREATE TABLE Locations(
 CREATE TABLE Encounters(
 	PokemonID INTEGER,
 	LocationName VARCHAR(50),
-	EncounterRate INTEGER NOT NULL,
+	EncounterRate VARCHAR(10) NOT NULL,
 	PRIMARY KEY (PokemonID, LocationName),
 	FOREIGN KEY (PokemonID) REFERENCES Pokemon(PID),
 	FOREIGN KEY (LocationName) REFERENCES Locations(LocationName)
