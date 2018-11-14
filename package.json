@@ -3,9 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "tsc ",
+    "build": "tsc",
+    "client": "yarn --cwd front-end start",
+    "client-install": "yarn --cwd front-end install",
     "test": "mocha --require ts-node/register test/*.ts --timeout 10000 --exit",
-    "start": "node bin/www"
+    "server": "nodemon bin/www",
+    "start": "concurrently \"npm run server\" \"npm run client\""
   },
   "dependencies": {
     "@types/chai": "^4.1.7",
@@ -24,6 +27,8 @@
   "devDependencies": {
     "@types/mocha": "^5.2.5",
     "@types/mysql": "^2.15.5",
-    "mocha": "^5.2.0"
+    "concurrently": "^4.0.1",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.6"
   }
 }
