@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 
 class App extends Component {
   constructor(props) {
@@ -24,6 +26,15 @@ class App extends Component {
   }
 
   render() {
+    const options = [
+      "pokemon",
+      "items",
+      "buildings",
+      "locations",
+      "types",
+      "moves"
+    ];
+
     const columns = [
       {
         Header: "User ID",
@@ -43,11 +54,21 @@ class App extends Component {
       }
     ];
     return (
-      <ReactTable
-        columns={columns}
-        data={this.state.posts}
-        noDataText={"No more data to display."}
-      />
+      <div>
+        <Dropdown
+          className="interested"
+          options={options}
+          onChange={this._onSelect}
+          //value={defaultOption}
+          placeholder="Select an option"
+        />
+        <ReactTable
+          columns={columns}
+          data={this.state.posts}
+          defaultPageSize={10}
+          noDataText={"No more data to display."}
+        />
+      </div>
     );
   }
 }
