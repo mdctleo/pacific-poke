@@ -47,3 +47,8 @@ docker-compose down          # to destroy the containers
 docker-compose logs --follow # tail the container logs
 docker-compose ps -a         # see the status of your containers
 ```
+
+##############
+use command "npm start"  to start server
+server will be started at 127.0.0.1:3000
+

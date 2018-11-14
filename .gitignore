@@ -3,3 +3,17 @@
 .vscode
 dbdata
 out
+**/.idea/workspace.xml
+**/.idea/tasks.xml
+**/.idea/runConfigurations/test.xml
+
+node_modules/
+coverage/
+src/*.js
+src/*.map
+src/**/*.js
+src/**/*.map
+test/*.js
+test/*.map
+.DS_Store
+.env
