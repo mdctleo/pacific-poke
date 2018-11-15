@@ -10,19 +10,18 @@ class App extends Component {
     super(props);
 
     this.state = {
-      posts: []
+      tableColumns: [],
+      tableData: []
     };
   }
 
   componentDidMount() {
-    const url = "https://jsonplaceholder.typicode.com/posts";
+    const url = "http://localhost:3006/pokemon";
     fetch(url, {
       method: "GET"
     })
       .then(reponse => reponse.json())
-      .then(posts => {
-        this.setState({ posts: posts });
-      });
+      .then(result => this.setState(result));
   }
 
   render() {
@@ -35,24 +34,6 @@ class App extends Component {
       "moves"
     ];
 
-    const columns = [
-      {
-        Header: "User ID",
-        accessor: "userId"
-      },
-      {
-        Header: "ID",
-        accessor: "userId"
-      },
-      {
-        Header: "Title",
-        accessor: "title"
-      },
-      {
-        Header: "Content",
-        accessor: "body"
-      }
-    ];
     return (
       <div>
         <Dropdown
@@ -63,8 +44,8 @@ class App extends Component {
           placeholder="Select an option"
         />
         <ReactTable
-          columns={columns}
-          data={this.state.posts}
+          columns={this.state.tableColumns}
+          data={this.state.tableData}
           defaultPageSize={10}
           noDataText={"No more data to display."}
         />

@@ -9,6 +9,18 @@ router.get('/', function(req: any, res: any, next: any) {
     res.render('index', { title: 'Express' });
 });
 
+// SELECT * FROM Pokemon
+router.get('/pokemon', (req: any, res: any, next: any) => {
+    pokemonImpl.selectAll()
+        .then((result) => {
+            res.send(result);
+        })
+        .catch((err) => {
+            res.send(err);
+        });
+    }
+);
+
 // SELECT * FROM Pokemon WHERE Pokemon.PokemonName = ?;
 router.get('/getPokemonWithName/:name', (req: any, res: any, next: any) => {
     pokemonImpl.selectPokemonWithName(req.params.name)
