@@ -39,20 +39,23 @@ class App extends Component {
       case "updateGymLeaderName":
         return [["LeaderName", "BuildingName"], "Update"];
 
-      case "getPokemonByMoveAndType":
+      case "getPokemonWithMoveAndType":
         return [["TypeName", "MoveName"], "Select"];
 
       case "selectPokemartsByItem":
         return [["Item Name"], "Select"];
 
-      case "getPokemonByName":
+      case "getPokemonWithName":
         return [["Pokemon Name"], "Select"];
 
-      case "getPokemonByMove":
+      case "getPokemonWithMove":
         return [["Move Name"], "Select"];
 
-      case "getEvolvedFormByPokemonName":
+      case "getEvolvedFormWithPokemonName":
         return [["Pokemon Name"], "Get Evolved Form"];
+
+      default:
+        return [[], 'Select']
     }
   }
 
@@ -60,6 +63,7 @@ class App extends Component {
     console.log(selection);
     let formAndButtonLabels = this.getRequiredFormInfo(selection.value);
     this.setState({
+      selected: selection.value,
       formLabels: formAndButtonLabels[0],
       buttonLabel: formAndButtonLabels[1]
     });
@@ -76,10 +80,10 @@ class App extends Component {
       "insertItems",
       "deleteBuilding",
       "updateGymLeaderName",
-      "getPokemonByMoveAndType",
+      "getPokemonWithMoveAndType",
       "selectPokemartsByItem",
-      "getPokemonByName",
-      "getPokemonByMove",
+      "getPokemonWithName",
+      "getPokemonWithMove",
       "getEvolvedFormByPokemonName"
     ];
 
@@ -99,8 +103,10 @@ class App extends Component {
           noDataText={"No more data to display."}
         />
         <QueryInput
+          selected={this.state.selected}
           formLabels={this.state.formLabels}
           buttonLabel={this.state.buttonLabel}
+          onButtonClick={this.setState.bind(this)}
         />
       </div>
     );
