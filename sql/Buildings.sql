@@ -43,6 +43,8 @@ INSERT INTO `Buildings` (`BuildingName`, `LocationName`) VALUES
 ('Vermilion City Pokemart', 'Vermilion City'),
 ('Viridian City Gym', 'Viridian City'),
 ('Viridian City Pokemart', 'Viridian City');
+('Celadon City Wu Store', 'Celadon City');
+('Celadon City Lamb Store', 'Celadon City');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
