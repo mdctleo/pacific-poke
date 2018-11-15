@@ -21,7 +21,7 @@ router.get('/getPokemonWithName/:name', (req: any, res: any, next: any) => {
 });
 
 // SELECT all Pokemon names that are fire-type that have the move “Bite”.
-router.get('/getPokemonWithMove/:move', (req: any, res: any, next: any) => {
+router.get('/getPokemonWithTypeAndMove/:type/:move', (req: any, res: any, next: any) => {
     // TODO: replace with actual implementation
     pokemonImpl.selectPokemonWithName(req.params.move)
         .then((result) => {
@@ -44,8 +44,8 @@ router.get('/getPokemartWithItem/:item', (req: any, res: any, next: any) => {
         });
 });
 
-// SELECT all the Moves GROUP BY move Types. This allows Pokemon Trainers to look at Pokemon moves grouped by their types. Used by Pokemon Trainers.
-router.get('/getPokemonsWithMoveType/:type', (req: any, res: any, next: any) => {
+// SHOW how many pokemons of each type exist in the database.
+router.get('/getPokemonsWithType', (req: any, res: any, next: any) => {
     // TODO: replace with actual implementation
     pokemonImpl.selectPokemonWithName(req.params.type)
         .then((result) => {
@@ -78,6 +78,11 @@ router.get('/getEvolutionWithId/:id', (req: any, res: any, next: any) => {
         .catch((err) => {
             res.send(err);
         });
+});
+
+// A Division Query: Get the IID and ItemName of items that are sold at every pokemart.
+router.get('/getItemsSoldAtEveryPokemart/:id', (req: any, res: any, next: any) => {
+
 });
 
 // INSERT a new item with its name, effect, cost and which Pokemart it’s sold in, used by Pokemart Inc.

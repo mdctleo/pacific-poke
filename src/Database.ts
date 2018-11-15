@@ -11,7 +11,8 @@ export default class Database {
             host: "localhost",
             user: "root",
             password: "root",
-            database: "pacificpoke"
+            database: "pacificpoke",
+            multipleStatements: true
         });
     }
 
