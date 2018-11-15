@@ -29,17 +29,16 @@ export default class PokemonImpl {
         });
     }
 
-    public selectPokemonWithName(name: string): Promise<string> {
+    public selectPokemonWithName(name: string): Promise<any> {
         return new Promise((resolve, reject) => {
-            let sql = "SELECT " + Database.COLUMN_POKEMON_NAME +
+            let sql = "SELECT * " +
                 " FROM " + Database.TABLE_POKEMON + " WHERE " + Database.COLUMN_POKEMON_NAME + " = ?";
             this.con.query(sql, [name], (err: any, result: any) => {
                 if (err) {
                     console.log(err);
                     reject(err);
                 } else {
-
-                    resolve(result[0].PokemonName);
+                    resolve(fmtTable(result));
                 }
 
             });
@@ -56,7 +55,7 @@ export default class PokemonImpl {
     // PokemonHasMoves ON Pokemon.PID = PokemonHasMoves.PID
     // WHERE
     // PokemonHasTypes.TypeName = 'Fire' AND PokemonHasMoves.MoveName = 'Bite';
-    public getPokemonWithTypeAndMove(type: string, move: string) {
+    public getPokemonWithTypeAndMove(type: string, move: string): Promise<any> {
         return new Promise((resolve, reject) => {
             let sql = "SELECT " +
                 "PokemonName " +
@@ -73,13 +72,13 @@ export default class PokemonImpl {
                     console.log(err);
                     reject(err);
                 } else {
-                    resolve(result);
+                    resolve(fmtTable(result));
                 }
             });
         })
     }
 
-    public getPokemartWithItem(itemName: string) {
+    public getPokemartWithItem(itemName: string): Promise<any> {
         return new Promise((resolve, reject) => {
            let sql = "SELECT " +
                "PokemartSellsItems.BuildingName " +
@@ -95,14 +94,14 @@ export default class PokemonImpl {
                     console.log(err);
                     reject(err);
                 } else {
-                    resolve(result);
+                    resolve(fmtTable(result));
                 }
             });
 
            });
     }
 
-    public getPokemonsWithType() {
+    public getPokemonsWithType(): Promise<any> {
         return new Promise((resolve, reject) => {
            let sql = "SELECT " +
                "COUNT(*), TypeName " +
@@ -117,13 +116,13 @@ export default class PokemonImpl {
                   console.log(err);
                   reject(err);
               } else {
-                  resolve(result);
+                  resolve(fmtTable(result));
               }
            });
         });
     }
 
-    public getMoveWithName(name: string) {
+    public getMoveWithName(name: string): Promise<any> {
         return new Promise((resolve, reject) => {
             let sql = "SELECT " +
                 "* " +
@@ -136,14 +135,14 @@ export default class PokemonImpl {
                     console.log(err);
                     reject(err);
                 } else {
-                    resolve(result);
+                    resolve(fmtTable(result));
                 }
             });
 
         });
     }
 
-    public getEvolutionWithId(id: number) {
+    public getEvolutionWithId(id: number): Promise<any> {
         return new Promise((resolve, reject) => {
             let sql = "CREATE OR REPLACE VIEW PokemonNameEvolutionsView AS SELECT " +
                 "p1.PokemonName AS 'EvolveFromPokemonName', " +
@@ -166,14 +165,14 @@ export default class PokemonImpl {
                     console.log(err);
                     reject(err);
                 } else {
-                    resolve(result[1]);
+                    resolve(fmtTable(result[1]));
                 }
             });
 
         });
     }
 
-    public getView () {
+    public getView (): Promise<any> {
         return new Promise((resolve, reject) => {
            let sql = "CREATE OR REPLACE VIEW PokemonNameEvolutionsView AS SELECT " +
                "p1.PokemonName AS 'EvolveFromPokemonName', " +
@@ -190,13 +189,13 @@ export default class PokemonImpl {
                     console.log(err);
                     reject(err);
                 } else {
-                    resolve(result);
+                    resolve(fmtTable(result));
                 }
             });
         });
     }
 
-    public getItemsSoldAtEveryPokemart(id: number) {
+    public getItemsSoldAtEveryPokemart(id: number): Promise<any> {
         return new Promise((resolve, reject) => {
             let sql = "SELECT IID, ItemName " +
                 "FROM Items i " +
@@ -218,7 +217,7 @@ export default class PokemonImpl {
         });
     }
 
-    public getLocationsPokemonAppearsIn() {
+    public getLocationsPokemonAppearsIn(): Promise<any> {
         return new Promise((resolve, reject) => {
            let sql = "SELECT PokemonID, COUNT(*) " +
                "FROM Encounters " +
@@ -229,13 +228,13 @@ export default class PokemonImpl {
                     console.log(err);
                     reject(err);
                 } else {
-                    resolve(result);
+                    resolve(fmtTable(result));
                 }
             });
         });
     }
 
-    public insertItem(itemId: number, name: string, effect: string, cost: number) {
+    public insertItem(itemId: number, name: string, effect: string, cost: number): Promise<any> {
         return new Promise((resolve, reject) => {
             // INSERT INTO Items VALUES (30, 'Leo Item', 'makes you leo', 300);
             let sql = "INSERT INTO Items VALUES (?, ?, ?, ?);" +
@@ -245,13 +244,13 @@ export default class PokemonImpl {
                     console.log(err);
                     reject(err);
                 } else {
-                    resolve(result[1]);
+                    resolve(fmtTable(result[1]));
                 }
             });
         });
     }
 
-    public deleteBuilding(bId: number) {
+    public deleteBuilding(bId: number): Promise<any> {
         return new Promise((resolve, reject) => {
             // DELETE FROM Buildings WHERE BID = 0;
             let sql = "DELETE FROM Buildings WHERE BID = ?;";
@@ -260,13 +259,13 @@ export default class PokemonImpl {
                     console.log(err);
                     reject(err);
                 } else {
-                    resolve(result);
+                    resolve(fmtTable(result));
                 }
             })
         });
     }
 
-    public updateGymLeader(leaderName: string, gymId: number) {
+    public updateGymLeader(leaderName: string, gymId: number): Promise<any> {
         return new Promise((resolve, reject) => {
             let sql = "UPDATE Gym SET Gym.LeaderName = ? WHERE Gym.BID = ?;" +
                 "SELECT * FROM Gym";
@@ -275,7 +274,7 @@ export default class PokemonImpl {
                     console.log(err);
                     reject(err);
                 } else {
-                    resolve(result[1]);
+                    resolve(fmtTable(result[1]));
                 }
             });
         })
