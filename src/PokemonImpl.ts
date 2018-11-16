@@ -17,7 +17,7 @@ export default class PokemonImpl {
     }
 
     public selectAll(tableName: string): Promise<Object> {
-        let sql = 'SELECT * FROM ?';
+        let sql = 'SELECT * FROM ??';
         return new Promise((resolve, reject) => {
             this.con.query(sql, [tableName], (err: any, result: any) => {
                 if (err) {
