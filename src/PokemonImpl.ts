@@ -16,10 +16,10 @@ export default class PokemonImpl {
         this.con = this.db.database;
     }
 
-    public selectAll(): Promise<Object> {
-        let sql = 'SELECT * FROM Pokemon';
+    public selectAll(tableName: string): Promise<Object> {
+        let sql = 'SELECT * FROM ?';
         return new Promise((resolve, reject) => {
-            this.con.query(sql, (err: any, result: any) => {
+            this.con.query(sql, [tableName], (err: any, result: any) => {
                 if (err) {
                     reject(err);
                 } else {

@@ -10,8 +10,8 @@ router.get('/', function(req: any, res: any, next: any) {
 });
 
 // SELECT * FROM Pokemon
-router.get('/pokemon', (req: any, res: any, next: any) => {
-    pokemonImpl.selectAll()
+router.get('/all/:name', (req: any, res: any, next: any) => {
+    pokemonImpl.selectAll(req.params.name)
         .then((result) => {
             res.send(result);
         })
