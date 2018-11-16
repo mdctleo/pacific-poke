@@ -55,7 +55,7 @@ router.get('/getPokemartWithItem/:item', (req: any, res: any, next: any) => {
 });
 
 // SHOW how many pokemons of each type exist in the database.
-router.get('/getPokemonsWithType', (req: any, res: any, next: any) => {
+router.get('/getNumberOfPokemonWithType', (req: any, res: any, next: any) => {
     // TODO: replace with actual implementation
     pokemonImpl.getPokemonsWithType()
         .then((result) => {
@@ -79,7 +79,7 @@ router.get('/getMoveWithName/:name', (req: any, res: any, next: any) => {
 });
 
 // SELECT PokemonEvolvesTo.EvolveToPID FROM PokemonEvolvesTo WHERE PokemonEvolvesTO.EvolveFromPID = ?;
-router.get('/getEvolutionWithId/:id', (req: any, res: any, next: any) => {
+router.get('/getEvolutionWithPokemon/:id', (req: any, res: any, next: any) => {
     // TODO: replace with actual implementation
     pokemonImpl.getEvolutionWithId(req.params.id)
         .then((result) => {
