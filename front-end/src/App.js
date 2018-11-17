@@ -20,7 +20,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const url = "http://localhost:3006/pokemon";
+    const url = "http://localhost:3006/all/Pokemon";
     fetch(url, {
       method: "GET"
     })
@@ -28,34 +28,45 @@ class App extends Component {
       .then(result => this.setState(result));
   }
 
+  /*
+  callEndpoint() {
+    const url = `http://localhost:3006/all/${this.state.selected.value}`;
+    fetch(url, {
+      method: "GET"
+    })
+      .then(reponse => reponse.json())
+      .then(result => this.setState(result));
+  }
+  */
+
   getRequiredFormInfo(table) {
     switch (table) {
-      case "insertItems":
-        return [["ID", "Name", "Effect", "Cost"], "Insert"];
+      case "insertItem":
+        return [["ID", "Name", "Effect", "Cost"], "Insert Item"];
 
       case "deleteBuilding":
-        return [["BuildingName"], "Delete"];
+        return [["BuildingName"], "Delete Building"];
 
-      case "updateGymLeaderName":
-        return [["LeaderName", "BuildingName"], "Update"];
+      case "Gym":
+        return [["LeaderName", "BuildingName"], "Update Gym Leader"];
 
       case "getPokemonWithMoveAndType":
-        return [["TypeName", "MoveName"], "Select"];
+        return [["TypeName", "MoveName"], "Get Pokemon"];
 
       case "selectPokemartsByItem":
-        return [["Item Name"], "Select"];
+        return [["Item Name"], "Get Pokemarts"];
 
       case "getPokemonWithName":
-        return [["Pokemon Name"], "Select"];
+        return [["Pokemon Name"], "Get Pokemon"];
 
       case "getPokemonWithMove":
-        return [["Move Name"], "Select"];
+        return [["Move Name"], "Get Pokemon"];
 
       case "getEvolvedFormWithPokemonName":
-        return [["Pokemon Name"], "Get Evolved Form"];
+        return [["Pokemon Name"], "Get Pokemon's Evolved Form"];
 
       default:
-        return [[], 'Select']
+        return [[], "Select"];
     }
   }
 
@@ -67,24 +78,89 @@ class App extends Component {
       formLabels: formAndButtonLabels[0],
       buttonLabel: formAndButtonLabels[1]
     });
+    // put into a different method
+    console.log(selection.value);
+    this.convertToEndpoint(selection.value);
+
+    console.log("ran convert to endpoint");
+    /*
+    const url = `http://localhost:3006/all/${selection.value}`;
+    fetch(url, {
+      method: "GET"
+    })
+      .then(reponse => reponse.json())
+      .then(result => this.setState(result));
+    */
   };
+
+  convertToEndpoint(selection) {
+    if (selection === "insertItem") {
+      const url = `http://localhost:3006/all/Items`;
+      fetch(url, {
+        method: "GET"
+      })
+        .then(reponse => reponse.json())
+        .then(result => this.setState(result));
+    }
+    if (selection === "deleteBuilding") {
+      const url = `http://localhost:3006/all/Buildings`;
+      fetch(url, {
+        method: "GET"
+      })
+        .then(reponse => reponse.json())
+        .then(result => this.setState(result));
+    }
+    if (selection === "updateGymLeaderName") {
+      const url = `http://localhost:3006/all/Gym`;
+      fetch(url, {
+        method: "GET"
+      })
+        .then(reponse => reponse.json())
+        .then(result => this.setState(result));
+    }
+    if (
+      selection === "getPokemonWithMoveAndType" ||
+      selection === "getPokemonWithName" ||
+      selection === "getPokemonWithMove" ||
+      selection === "getEvolvedFormByPokemonName"
+    ) {
+      const url = `http://localhost:3006/all/Pokemon`;
+      fetch(url, {
+        method: "GET"
+      })
+        .then(reponse => reponse.json())
+        .then(result => this.setState(result));
+    }
+    if (selection === "selectPokemartsByItem") {
+      const url = `http://localhost:3006/all/Pokemart`;
+      fetch(url, {
+        method: "GET"
+      })
+        .then(reponse => reponse.json())
+        .then(result => this.setState(result));
+    }
+    if (selection === "getLocationsPokemonAppearsIn") {
+      const url = `http://localhost:3006/all/Locations`;
+      fetch(url, {
+        method: "GET"
+      })
+        .then(reponse => reponse.json())
+        .then(result => this.setState(result));
+    }
+  }
 
   render() {
     const options = [
-      "pokemon",
-      "items",
-      "buildings",
-      "locations",
-      "types",
-      "moves",
-      "insertItems",
+      "Pokemon",
+      "insertItem",
       "deleteBuilding",
       "updateGymLeaderName",
-      "getPokemonWithMoveAndType",
       "selectPokemartsByItem",
       "getPokemonWithName",
       "getPokemonWithMove",
-      "getEvolvedFormByPokemonName"
+      "getPokemonWithMoveAndType",
+      "getEvolvedFormByPokemonName",
+      "getLocationsPokemonAppearsIn"
     ];
 
     return (
