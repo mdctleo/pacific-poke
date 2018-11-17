@@ -14,18 +14,15 @@ class App extends Component {
       tableColumns: [],
       tableData: [],
       formLabels: [],
-      buttonLabel: "",
-      selected: "pokemon"
+      buttonLabel: "Refresh",
+      selected: "Pokemon",
+      onButtonClick: () => {},
+      onButtonClickOptions: {}
     };
   }
 
   componentDidMount() {
-    const url = "http://localhost:3006/all/Pokemon";
-    fetch(url, {
-      method: "GET"
-    })
-      .then(reponse => reponse.json())
-      .then(result => this.setState(result));
+    this._onSelect({value: this.state.selected})
   }
 
   /*
@@ -41,59 +38,72 @@ class App extends Component {
 
   getRequiredFormInfo(table) {
     switch (table) {
+      // Tested that the 3 modifiers work.
       case "insertItem":
-        return [["ID", "Name", "Effect", "Cost"], "Insert Item"];
+        return [["ID", "ItemName", "Effect", "Cost"], "Insert Item", {method: 'POST', headers: {'Content-Type': 'application/json'}}];
 
       case "deleteBuilding":
-        return [["BuildingName"], "Delete Building"];
+        return [["BuildingName"], "Delete Building", {method: 'DELETE', headers: {'Content-Type': 'application/json'}}];
 
-      case "Gym":
-        return [["LeaderName", "BuildingName"], "Update Gym Leader"];
+      case "updateGymLeaderName":
+        return [["BuildingName", "LeaderName"], "Update Gym Leader", {method: 'PUT', headers: {'Content-Type': 'application/json'}}];
 
+      // TODO: The way I've done it so far is that the button names
+      //       should map to the body expected in the backend.
       case "getPokemonWithMoveAndType":
-        return [["TypeName", "MoveName"], "Get Pokemon"];
+        return [["TypeName", "MoveName"], "Get Pokemon", {}];
 
       case "selectPokemartsByItem":
-        return [["Item Name"], "Get Pokemarts"];
+        return [["Item Name"], "Get Pokemarts", {}];
 
       case "getPokemonWithName":
-        return [["Pokemon Name"], "Get Pokemon"];
+        return [["Pokemon Name"], "Get Pokemon", {}];
 
       case "getPokemonWithMove":
-        return [["Move Name"], "Get Pokemon"];
+        return [["Move Name"], "Get Pokemon", {}];
 
       case "getEvolvedFormWithPokemonName":
-        return [["Pokemon Name"], "Get Pokemon's Evolved Form"];
+        return [["Pokemon Name"], "Get Pokemon's Evolved Form", {}];
 
       default:
-        return [[], "Select"];
+        return [[], "Refresh", {}];
     }
   }
 
   _onSelect = selection => {
     console.log(selection);
-    let formAndButtonLabels = this.getRequiredFormInfo(selection.value);
+    let requiredFormInfo = this.getRequiredFormInfo(selection.value);
     this.setState({
       selected: selection.value,
-      formLabels: formAndButtonLabels[0],
-      buttonLabel: formAndButtonLabels[1]
+      formLabels: requiredFormInfo[0],
+      buttonLabel: requiredFormInfo[1],
+      onButtonClickOptions: requiredFormInfo[2]
     });
     // put into a different method
     console.log(selection.value);
     this.convertToEndpoint(selection.value);
-
     console.log("ran convert to endpoint");
-    /*
-    const url = `http://localhost:3006/all/${selection.value}`;
-    fetch(url, {
-      method: "GET"
-    })
-      .then(reponse => reponse.json())
-      .then(result => this.setState(result));
-    */
+
+    let method = requiredFormInfo[2]['method']
+    if (method && (method === 'DELETE')) {
+      // DELETE should use client side logic to render
+      // because backend doesn't return back the new table.
+      this.onButtonClick = (_) => this.convertToEndpoint(this.state.selected);
+    } else {
+      // Set our table to the data fetched by child component.
+      this.onButtonClick = this.setState.bind(this);
+    }
   };
 
   convertToEndpoint(selection) {
+    if (selection === "Pokemon") {
+      const url = "http://localhost:3006/all/Pokemon";
+      fetch(url, {
+        method: "GET"
+      })
+        .then(reponse => reponse.json())
+        .then(result => this.setState(result));
+    }
     if (selection === "insertItem") {
       const url = `http://localhost:3006/all/Items`;
       fetch(url, {
@@ -182,7 +192,8 @@ class App extends Component {
           selected={this.state.selected}
           formLabels={this.state.formLabels}
           buttonLabel={this.state.buttonLabel}
-          onButtonClick={this.setState.bind(this)}
+          onButtonClick={this.onButtonClick}
+          onButtonClickOptions={this.state.onButtonClickOptions}
         />
       </div>
     );

@@ -103,22 +103,19 @@ router.get('/getItemsSoldAtEveryPokemart/:id', (req: any, res: any, next: any) =
 });
 
 // INSERT a new item with its name, effect, cost and which Pokemart it’s sold in, used by Pokemart Inc.
-router.post('/newItem', (req: any, res: any) => {
-    // parameters should be req.body.id, req.body.name, req.body.effect, req.body.cost
-    pokemonImpl.insertItem(req.body.id, req.body.name, req.body.effect, req.body.cost)
+router.post('/insertItem', (req: any, res: any) => {
+    pokemonImpl.insertItem(req.body.ID, req.body.ItemName, req.body.Effect, req.body.Cost)
         .then((result) => {
             res.status(200).send(result);
         })
         .catch((err) => {
             res.status(400).send(err);
         });
-
 });
 
 // DELETE a building WHERE it’s ID matches the buildings ID to be deleted. For example, if it has been demolished. Used by Pokemon Scholar.
 router.delete('/deleteBuilding', (req: any, res: any) => {
-    // parameters should be req.body.id
-    pokemonImpl.deleteBuilding(res.body.id)
+    pokemonImpl.deleteBuilding(req.body.BuildingName)
         .then((result) => {
             res.status(200).send(result);
         })
@@ -128,16 +125,15 @@ router.delete('/deleteBuilding', (req: any, res: any) => {
 });
 
 // UPDATE a Gym’s gym leader name WHERE the ID matches the gym’s ID to updated. For example, if the gym leader passes away, goes on parental leave or is relieved of their position. Used by Gym Owners.
-router.put('/updateGymLeader', (req: any, res: any) => {
-    //TODO: replace with actual implementation
-    pokemonImpl.updateGymLeader(req.body.name, req.body.id)
+router.put('/updateGymLeaderName', (req: any, res: any) => {
+    pokemonImpl.updateGymLeaderName(req.body.LeaderName, req.body.BuildingName)
         .then((result) => {
+            console.log(result)
             res.status(200).send(result);
         })
         .catch((err) => {
             res.status(400).send(err);
         });
-    // parameters should be req.body.id
 });
 
 // CREATE VIEW for Pokemon( Pokemon ID, Pokemon Name), PokemonEvolvesTo( Pokemon Evolve From, Pokemon Evolve To, At Level)

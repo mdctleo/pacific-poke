@@ -20,12 +20,22 @@ class QueryInput extends Component {
 
   handleClick = () => {
     let endpoint = `http://localhost:3006/${this.props.selected}`;
+    let fetchOptions = this.props.onButtonClickOptions;
     if (this.state.userFormInput.length > 0) {
-      endpoint += `/${this.state.userFormInput.join('/')}`;
+      if (Object.keys(fetchOptions).length === 0) {
+        // GET
+        endpoint += `/${this.state.userFormInput.join('/')}`;
+      } else {
+        // POST, PUT, DELETE
+        let body = {}
+        for (let i = 0; i < this.props.formLabels.length; i++) {
+          body[this.props.formLabels[i]] = this.state.userFormInput[i];
+        }
+        fetchOptions['body'] = JSON.stringify(body)
+      }
     }
-    console.log(endpoint, this.state);
-    // TODO: Handle POST, PUT, DELETE queries (e.g. create item, update item, delete building)
-    fetch(endpoint)
+    console.log(endpoint, this.state, fetchOptions);
+    fetch(endpoint, fetchOptions)
       .then(res => res.json())
       .then(res => this.props.onButtonClick(res));
   };
@@ -43,9 +53,10 @@ class QueryInput extends Component {
             />
           );
         })}
+        {this.props.buttonLabel !== '' &&
         <Button bsStyle="primary" onClick={this.handleClick}>
           {this.props.buttonLabel}
-        </Button>
+        </Button>}
       </div>
     );
   }

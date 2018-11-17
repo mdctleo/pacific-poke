@@ -1,6 +1,9 @@
 import Database from "./Database";
 
 function fmtTable(result: any): Object {
+    if (!result) {
+        return { tableColumns: [], tableData: [] }
+    }
     let columns = []
     for (let column in result[0]) {
         columns.push({Header: column, accessor: column});
@@ -250,11 +253,10 @@ export default class PokemonImpl {
         });
     }
 
-    public deleteBuilding(bId: number): Promise<any> {
+    public deleteBuilding(buildingName: string): Promise<any> {
         return new Promise((resolve, reject) => {
-            // DELETE FROM Buildings WHERE BID = 0;
-            let sql = "DELETE FROM Buildings WHERE BID = ?;";
-            this.con.query(sql, [bId], (err: any, result: any) => {
+            let sql = "DELETE FROM Buildings WHERE BuildingName = ?;";
+            this.con.query(sql, [buildingName], (err: any, result: any) => {
                 if (err) {
                     console.log(err);
                     reject(err);
@@ -265,11 +267,11 @@ export default class PokemonImpl {
         });
     }
 
-    public updateGymLeader(leaderName: string, gymId: number): Promise<any> {
+    public updateGymLeaderName(leaderName: string, buildingName: string): Promise<any> {
         return new Promise((resolve, reject) => {
-            let sql = "UPDATE Gym SET Gym.LeaderName = ? WHERE Gym.BID = ?;" +
+            let sql = "UPDATE Gym SET Gym.LeaderName = ? WHERE Gym.BuildingName = ?;" +
                 "SELECT * FROM Gym";
-            this.con.query(sql, [leaderName, gymId], (err: any, result: any) => {
+            this.con.query(sql, [leaderName, buildingName], (err: any, result: any) => {
                 if (err) {
                     console.log(err);
                     reject(err);
