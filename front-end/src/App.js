@@ -48,8 +48,7 @@ class App extends Component {
       case "updateGymLeaderName":
         return [["BuildingName", "LeaderName"], "Update Gym Leader", {method: 'PUT', headers: {'Content-Type': 'application/json'}}];
 
-      // TODO: The way I've done it so far is that the button names
-      //       should map to the body expected in the backend.
+      // TODO: test these and finish these up
       case "getPokemonWithMoveAndType":
         return [["TypeName", "MoveName"], "Get Pokemon", {}];
 
