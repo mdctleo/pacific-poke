@@ -48,6 +48,26 @@ export default class PokemonImpl {
         });
     }
 
+    public getPokemonWithMove(move: string): Promise<any> {
+        return new Promise((resolve, reject) => {
+            let sql = "SELECT " +
+                "PokemonName " +
+                "FROM " +
+                "Pokemon " +
+                "JOIN " +
+                "PokemonHasMoves ON Pokemon.PID = PokemonHasMoves.PID " +
+                "WHERE " +
+                "PokemonHasMoves.MoveName = ?;"
+            this.con.query(sql, [move], (err: any, result: any) => {
+                if (err) {
+                    console.log(err);
+                    reject(err);
+                } else {
+                    resolve(fmtTable(result));
+                }
+            });
+        })
+    }
     // SELECT
     // PokemonName
     // FROM
@@ -81,7 +101,7 @@ export default class PokemonImpl {
         })
     }
 
-    public getPokemartWithItem(itemName: string): Promise<any> {
+    public getPokemartsWithItemName(itemName: string): Promise<any> {
         return new Promise((resolve, reject) => {
            let sql = "SELECT " +
                "PokemartSellsItems.BuildingName " +
@@ -145,30 +165,20 @@ export default class PokemonImpl {
         });
     }
 
-    public getEvolutionWithId(id: number): Promise<any> {
+    public getEvolvedFormWithPokemonName(name: string): Promise<any> {
         return new Promise((resolve, reject) => {
-            let sql = "CREATE OR REPLACE VIEW PokemonNameEvolutionsView AS SELECT " +
-                "p1.PokemonName AS 'EvolveFromPokemonName', " +
-                "p2.PokemonName AS 'EvolveToPokemonName', " +
-                "PokemonEvolvesTo.AtLevel " +
-                "FROM " +
-                "Pokemon p1, " +
-                "Pokemon p2, " +
-                "PokemonEvolvesTo " +
-                "WHERE " +
-                "p1.PID = PokemonEvolvesTo.EvolveFromPID AND p2.PID = PokemonEvolvesTo.EvolveToPID;" +
-                "SELECT " +
-                "* " +
-                "FROM " +
-                "PokemonNameEvolutionsView " +
-                "WHERE " +
-                "PokemonNameEvolutionsView.EvolveFromPokemonName = '?';";
+            let sql = `SELECT
+                            *
+                        FROM
+                            PokemonNameEvolutionsView
+                        WHERE
+                            PokemonNameEvolutionsView.EvolveFromPokemonName = ?;`
             this.con.query(sql, [name], (err: any, result: any) => {
                 if (err) {
                     console.log(err);
                     reject(err);
                 } else {
-                    resolve(fmtTable(result[1]));
+                    resolve(fmtTable(result));
                 }
             });
 
@@ -198,7 +208,7 @@ export default class PokemonImpl {
         });
     }
 
-    public getItemsSoldAtEveryPokemart(id: number): Promise<any> {
+    public getItemsSoldAtEveryPokemart(): Promise<any> {
         return new Promise((resolve, reject) => {
             let sql = "SELECT IID, ItemName " +
                 "FROM Items i " +
@@ -209,12 +219,12 @@ export default class PokemonImpl {
                 "          FROM PokemartSellsItems psi " +
                 "          WHERE i.IID=psi.IID " +
                 "              AND p.BuildingName=psi.BuildingName));";
-            this.con.query(sql, [id], (err: any, result: any) => {
+            this.con.query(sql, (err: any, result: any) => {
                 if (err) {
                     console.log(err);
                     reject(err);
                 } else {
-                    resolve(result);
+                    resolve(fmtTable(result));
                 }
             });
         });

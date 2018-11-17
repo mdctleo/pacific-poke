@@ -48,11 +48,10 @@ class App extends Component {
       case "updateGymLeaderName":
         return [["BuildingName", "LeaderName"], "Update Gym Leader", {method: 'PUT', headers: {'Content-Type': 'application/json'}}];
 
-      // TODO: test these and finish these up
-      case "getPokemonWithMoveAndType":
-        return [["TypeName", "MoveName"], "Get Pokemon", {}];
+      case "getPokemonWithTypeAndMove":
+        return [["Type Name", "Move Name"], "Get Pokemon", {}];
 
-      case "selectPokemartsByItem":
+      case "getPokemartsWithItemName":
         return [["Item Name"], "Get Pokemarts", {}];
 
       case "getPokemonWithName":
@@ -94,68 +93,36 @@ class App extends Component {
     }
   };
 
+  getTableForDropdownSelection(selection) {
+    switch(selection) {
+      case 'insertItem':
+        return 'all/Items';
+      case 'deleteBuilding':
+        return 'all/Buildings';
+      case 'updateGymLeaderName':
+        return 'all/Gym';
+      case 'getPokemartsWithItemName':
+        return 'all/Pokemart'
+      case 'getLocationsPokemonAppearsIn':
+        return 'getLocationsPokemonAppearsIn'
+      case 'getItemsSoldAtEveryPokemart':
+        return 'getItemsSoldAtEveryPokemart'
+      default:
+        if (selection.includes('Pokemon')) {
+          return 'all/Pokemon'
+        }
+        throw ('[getTableForDropdownSelection] invalid selection:', selection)
+    }
+  }
+
   convertToEndpoint(selection) {
-    if (selection === "Pokemon") {
-      const url = "http://localhost:3006/all/Pokemon";
-      fetch(url, {
-        method: "GET"
-      })
-        .then(reponse => reponse.json())
-        .then(result => this.setState(result));
-    }
-    if (selection === "insertItem") {
-      const url = `http://localhost:3006/all/Items`;
-      fetch(url, {
-        method: "GET"
-      })
-        .then(reponse => reponse.json())
-        .then(result => this.setState(result));
-    }
-    if (selection === "deleteBuilding") {
-      const url = `http://localhost:3006/all/Buildings`;
-      fetch(url, {
-        method: "GET"
-      })
-        .then(reponse => reponse.json())
-        .then(result => this.setState(result));
-    }
-    if (selection === "updateGymLeaderName") {
-      const url = `http://localhost:3006/all/Gym`;
-      fetch(url, {
-        method: "GET"
-      })
-        .then(reponse => reponse.json())
-        .then(result => this.setState(result));
-    }
-    if (
-      selection === "getPokemonWithMoveAndType" ||
-      selection === "getPokemonWithName" ||
-      selection === "getPokemonWithMove" ||
-      selection === "getEvolvedFormByPokemonName"
-    ) {
-      const url = `http://localhost:3006/all/Pokemon`;
-      fetch(url, {
-        method: "GET"
-      })
-        .then(reponse => reponse.json())
-        .then(result => this.setState(result));
-    }
-    if (selection === "selectPokemartsByItem") {
-      const url = `http://localhost:3006/all/Pokemart`;
-      fetch(url, {
-        method: "GET"
-      })
-        .then(reponse => reponse.json())
-        .then(result => this.setState(result));
-    }
-    if (selection === "getLocationsPokemonAppearsIn") {
-      const url = `http://localhost:3006/all/Locations`;
-      fetch(url, {
-        method: "GET"
-      })
-        .then(reponse => reponse.json())
-        .then(result => this.setState(result));
-    }
+    const url = `http://localhost:3006/${this.getTableForDropdownSelection(selection)}`;
+    fetch(url, {
+      method: "GET"
+    })
+      .then(reponse => reponse.json())
+      .then(result => this.setState(result))
+      .catch(err => console.error(err));
   }
 
   render() {
@@ -164,12 +131,13 @@ class App extends Component {
       "insertItem",
       "deleteBuilding",
       "updateGymLeaderName",
-      "selectPokemartsByItem",
+      "getPokemartsWithItemName",
       "getPokemonWithName",
       "getPokemonWithMove",
-      "getPokemonWithMoveAndType",
-      "getEvolvedFormByPokemonName",
-      "getLocationsPokemonAppearsIn"
+      "getPokemonWithTypeAndMove",
+      "getEvolvedFormWithPokemonName",
+      "getLocationsPokemonAppearsIn",
+      "getItemsSoldAtEveryPokemart"
     ];
 
     return (

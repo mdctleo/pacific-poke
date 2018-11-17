@@ -37,7 +37,8 @@ class QueryInput extends Component {
     console.log(endpoint, this.state, fetchOptions);
     fetch(endpoint, fetchOptions)
       .then(res => res.json())
-      .then(res => this.props.onButtonClick(res));
+      .then(res => this.props.onButtonClick(res))
+      .catch(err => console.error(err));
   };
 
   render() {

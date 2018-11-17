@@ -32,6 +32,17 @@ router.get('/getPokemonWithName/:name', (req: any, res: any, next: any) => {
         });
 });
 
+// SELECT
+router.get('/getPokemonWithMove/:move', (req: any, res: any, next: any) => {
+    pokemonImpl.getPokemonWithMove(req.params.move)
+        .then((result) => {
+            res.status(200).send(result);
+        })
+        .catch((err) => {
+            res.status(400).send(err);
+        });
+});
+
 // SELECT all Pokemon names that are fire-type that have the move “Bite”.
 router.get('/getPokemonWithTypeAndMove/:type/:move', (req: any, res: any, next: any) => {
     pokemonImpl.getPokemonWithTypeAndMove(req.params.type, req.params.move)
@@ -44,8 +55,8 @@ router.get('/getPokemonWithTypeAndMove/:type/:move', (req: any, res: any, next: 
 });
 
 // SELECT all Pokemarts where “FireStone” is sold.This query would join 6 tables including Locations, Buildings, Pokemart, PokemartSellsItems, Items and Stone. Used by Pokemon Trainers.
-router.get('/getPokemartWithItem/:item', (req: any, res: any, next: any) => {
-    pokemonImpl.getPokemartWithItem(req.params.item)
+router.get('/getPokemartsWithItemName/:item', (req: any, res: any, next: any) => {
+    pokemonImpl.getPokemartsWithItemName(req.params.item)
         .then((result) => {
             res.status(200).send(result);
         })
@@ -79,9 +90,9 @@ router.get('/getMoveWithName/:name', (req: any, res: any, next: any) => {
 });
 
 // SELECT PokemonEvolvesTo.EvolveToPID FROM PokemonEvolvesTo WHERE PokemonEvolvesTO.EvolveFromPID = ?;
-router.get('/getEvolutionWithPokemon/:id', (req: any, res: any, next: any) => {
-    // TODO: replace with actual implementation
-    pokemonImpl.getEvolutionWithId(req.params.id)
+router.get('/getEvolvedFormWithPokemonName/:name', (req: any, res: any, next: any) => {
+    console.log(req.params)
+    pokemonImpl.getEvolvedFormWithPokemonName(req.params.name)
         .then((result) => {
             res.status(200).send(result);
         })
@@ -91,15 +102,14 @@ router.get('/getEvolutionWithPokemon/:id', (req: any, res: any, next: any) => {
 });
 
 // A Division Query: Get the IID and ItemName of items that are sold at every pokemart.
-router.get('/getItemsSoldAtEveryPokemart/:id', (req: any, res: any, next: any) => {
-    pokemonImpl.getItemsSoldAtEveryPokemart(req.params.id)
+router.get('/getItemsSoldAtEveryPokemart', (req: any, res: any, next: any) => {
+    pokemonImpl.getItemsSoldAtEveryPokemart()
         .then((result) => {
             res.status(200).send(result);
         })
         .catch((err) => {
             res.status(400).send(err);
         });
-
 });
 
 // INSERT a new item with its name, effect, cost and which Pokemart it’s sold in, used by Pokemart Inc.
