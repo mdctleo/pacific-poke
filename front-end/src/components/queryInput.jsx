@@ -4,9 +4,6 @@ import { Button, FormControl } from "react-bootstrap";
 class QueryInput extends Component {
   constructor(props) {
     super(props);
-    // TODO: reset userFormInput array if selected to something else.
-    //       e.g. selectPokemonWithName to pokemon
-    //       current problem is it still remembers the inputs of selectPokemonWithName
     this.state = {
       userFormInput: new Array(this.props.formLabels.length)
     };
@@ -41,6 +38,13 @@ class QueryInput extends Component {
       .catch(err => console.error(err));
   };
 
+  componentDidUpdate(prevProps) {
+    if (this.props.formLabels !== prevProps.formLabels) {
+      console.log('resetting form input state...')
+      this.setState({ userFormInput: new Array(this.props.formLabels.length) });
+    }
+  }
+
   render() {
     return (
       <div>
@@ -48,8 +52,8 @@ class QueryInput extends Component {
           return (
             <FormControl
               type="text"
-              key={index}
-              placeholder={this.props.formLabels[index]}
+              key={this.props.selected + formLabel}
+              placeholder={formLabel}
               onChange={event => this.handleChange(event, index)}
             />
           );
