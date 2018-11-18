@@ -93,7 +93,7 @@ class App extends Component {
     }
   };
 
-  getTableForDropdownSelection(selection) {
+  getEndpointForDropdownSelection(selection) {
     switch(selection) {
       case 'insertItem':
         return 'all/Items';
@@ -116,7 +116,7 @@ class App extends Component {
   }
 
   convertToEndpoint(selection) {
-    const url = `http://localhost:3006/${this.getTableForDropdownSelection(selection)}`;
+    const url = `http://localhost:3006/${this.getEndpointForDropdownSelection(selection)}`;
     fetch(url, {
       method: "GET"
     })
