@@ -4,7 +4,7 @@ function fmtTable(result: any): Object {
     if (!result) {
         return { tableColumns: [], tableData: [] }
     }
-    let columns = []
+    let columns = [];
     for (let column in result[0]) {
         columns.push({Header: column, accessor: column});
     }
@@ -265,13 +265,14 @@ export default class PokemonImpl {
 
     public deleteBuilding(buildingName: string): Promise<any> {
         return new Promise((resolve, reject) => {
-            let sql = "DELETE FROM Buildings WHERE BuildingName = ?;";
+            let sql = "DELETE FROM Buildings WHERE BuildingName = ?;" +
+                "SELECT * FROM Buildings;";
             this.con.query(sql, [buildingName], (err: any, result: any) => {
                 if (err) {
                     console.log(err);
                     reject(err);
                 } else {
-                    resolve(fmtTable(result));
+                    resolve(fmtTable(result[1]));
                 }
             })
         });
@@ -280,7 +281,7 @@ export default class PokemonImpl {
     public updateGymLeaderName(leaderName: string, buildingName: string): Promise<any> {
         return new Promise((resolve, reject) => {
             let sql = "UPDATE Gym SET Gym.LeaderName = ? WHERE Gym.BuildingName = ?;" +
-                "SELECT * FROM Gym";
+                "SELECT * FROM Gym;";
             this.con.query(sql, [leaderName, buildingName], (err: any, result: any) => {
                 if (err) {
                     console.log(err);
