@@ -232,10 +232,18 @@ export default class PokemonImpl {
 
     public getLocationsPokemonAppearsIn(): Promise<any> {
         return new Promise((resolve, reject) => {
-           let sql = "SELECT PokemonID, COUNT(*) " +
-               "FROM Encounters " +
-               "GROUP BY PokemonID " +
-               "ORDER BY COUNT(*) DESC;";
+            let sql = `
+                SELECT
+                    Pokemon.PokemonName,
+                    COUNT(*) as NumberOfLocationsAppearedIn
+                FROM
+                    Encounters
+                JOIN Pokemon ON Encounters.PokemonID = Pokemon.PID
+                GROUP BY
+                    PokemonID
+                ORDER BY
+                    NumberOfLocationsAppearedIn
+                DESC`
             this.con.query(sql, (err: any, result: any) => {
                 if (err) {
                     console.log(err);

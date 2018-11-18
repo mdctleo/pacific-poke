@@ -73,6 +73,8 @@ class App extends Component {
             case "getEvolvedFormWithPokemonName":
                 return [["Pokemon Name"], "Get Pokemon's Evolved Form", {}];
 
+            case "getMoveWithName":
+                return [["Move Name"], "Get Move", {}]
             default:
                 return [[], "Refresh", {}];
         }
@@ -109,6 +111,8 @@ class App extends Component {
                 return 'all/Gym';
             case 'getPokemartsWithItemName':
                 return 'all/Pokemart';
+            case 'getMoveWithName':
+                return 'all/Moves';
             case 'getLocationsPokemonAppearsIn':
                 return 'getLocationsPokemonAppearsIn';
             case 'getItemsSoldAtEveryPokemart':
@@ -142,6 +146,7 @@ class App extends Component {
             "getPokemonWithMove",
             "getPokemonWithTypeAndMove",
             "getEvolvedFormWithPokemonName",
+            "getMoveWithName",
             "getLocationsPokemonAppearsIn",
             "getItemsSoldAtEveryPokemart"
         ];
