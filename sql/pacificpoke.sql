@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 15, 2018 at 02:27 AM
+-- Generation Time: Nov 18, 2018 at 06:25 AM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.8
 
@@ -50,12 +50,15 @@ INSERT INTO `Buildings` (`BuildingName`, `LocationName`) VALUES
 ('Lavender Town Pokemart', 'Lavender Town'),
 ('Pewter City Gym', 'Pewter City'),
 ('Pewter City Pokemart', 'Pewter City'),
+('Fake Building', 'Route 1'),
 ('Saffron City Gym', 'Saffron City'),
 ('Saffron City Pokemart', 'Saffron City'),
 ('Vermilion City Gym', 'Vermilion City'),
 ('Vermilion City Pokemart', 'Vermilion City'),
 ('Viridian City Gym', 'Viridian City'),
-('Viridian City Pokemart', 'Viridian City');
+('Viridian City Lamb Store', 'Viridian City'),
+('Viridian City Pokemart', 'Viridian City'),
+('Viridian City Wu Store', 'Viridian City');
 
 -- --------------------------------------------------------
 
@@ -667,7 +670,8 @@ INSERT INTO `Items` (`IID`, `ItemName`, `Effect`, `Cost`) VALUES
 (80, 'Ether', 'Restore 10 PP (one technique)', NULL),
 (81, 'Max Ether', 'Restores PP to one technique', NULL),
 (82, 'Elixir', 'Restores 10 PP (all techniques)', NULL),
-(83, 'Max Elixir', 'Restores PP to all techniques', NULL);
+(83, 'Max Elixir', 'Restores PP to all techniques', NULL),
+(604, 'Essential Item', 'Every Pokemart have one', 300);
 
 -- --------------------------------------------------------
 
@@ -996,6 +1000,7 @@ INSERT INTO `PokemartSellsItems` (`IID`, `BuildingName`) VALUES
 (66, 'Celadon City Department Store'),
 (67, 'Celadon City Department Store'),
 (68, 'Celadon City Department Store'),
+(604, 'Celadon City Department Store'),
 (4, 'Cerulean City Pokemart'),
 (11, 'Cerulean City Pokemart'),
 (12, 'Cerulean City Pokemart'),
@@ -1003,6 +1008,7 @@ INSERT INTO `PokemartSellsItems` (`IID`, `BuildingName`) VALUES
 (15, 'Cerulean City Pokemart'),
 (20, 'Cerulean City Pokemart'),
 (30, 'Cerulean City Pokemart'),
+(604, 'Cerulean City Pokemart'),
 (2, 'Cinnabar Island Pokemart'),
 (3, 'Cinnabar Island Pokemart'),
 (18, 'Cinnabar Island Pokemart'),
@@ -1010,12 +1016,14 @@ INSERT INTO `PokemartSellsItems` (`IID`, `BuildingName`) VALUES
 (52, 'Cinnabar Island Pokemart'),
 (53, 'Cinnabar Island Pokemart'),
 (57, 'Cinnabar Island Pokemart'),
+(604, 'Cinnabar Island Pokemart'),
 (2, 'Fuchsia City Pokemart'),
 (3, 'Fuchsia City Pokemart'),
 (19, 'Fuchsia City Pokemart'),
 (52, 'Fuchsia City Pokemart'),
 (53, 'Fuchsia City Pokemart'),
 (56, 'Fuchsia City Pokemart'),
+(604, 'Fuchsia City Pokemart'),
 (2, 'Indigo Plateau Pokemart'),
 (3, 'Indigo Plateau Pokemart'),
 (16, 'Indigo Plateau Pokemart'),
@@ -1023,6 +1031,7 @@ INSERT INTO `PokemartSellsItems` (`IID`, `BuildingName`) VALUES
 (52, 'Indigo Plateau Pokemart'),
 (53, 'Indigo Plateau Pokemart'),
 (57, 'Indigo Plateau Pokemart'),
+(604, 'Indigo Plateau Pokemart'),
 (3, 'Lavender Town Pokemart'),
 (11, 'Lavender Town Pokemart'),
 (12, 'Lavender Town Pokemart'),
@@ -1032,6 +1041,7 @@ INSERT INTO `PokemartSellsItems` (`IID`, `BuildingName`) VALUES
 (29, 'Lavender Town Pokemart'),
 (53, 'Lavender Town Pokemart'),
 (56, 'Lavender Town Pokemart'),
+(604, 'Lavender Town Pokemart'),
 (4, 'Pewter City Pokemart'),
 (11, 'Pewter City Pokemart'),
 (12, 'Pewter City Pokemart'),
@@ -1039,22 +1049,26 @@ INSERT INTO `PokemartSellsItems` (`IID`, `BuildingName`) VALUES
 (15, 'Pewter City Pokemart'),
 (20, 'Pewter City Pokemart'),
 (29, 'Pewter City Pokemart'),
+(604, 'Pewter City Pokemart'),
 (3, 'Saffron City Pokemart'),
 (18, 'Saffron City Pokemart'),
 (29, 'Saffron City Pokemart'),
 (52, 'Saffron City Pokemart'),
 (53, 'Saffron City Pokemart'),
 (57, 'Saffron City Pokemart'),
+(604, 'Saffron City Pokemart'),
 (4, 'Vermilion City Pokemart'),
 (13, 'Vermilion City Pokemart'),
 (14, 'Vermilion City Pokemart'),
 (15, 'Vermilion City Pokemart'),
 (19, 'Vermilion City Pokemart'),
 (30, 'Vermilion City Pokemart'),
+(604, 'Vermilion City Pokemart'),
 (4, 'Viridian City Pokemart'),
 (11, 'Viridian City Pokemart'),
 (12, 'Viridian City Pokemart'),
-(15, 'Viridian City Pokemart');
+(15, 'Viridian City Pokemart'),
+(604, 'Viridian City Pokemart');
 
 -- --------------------------------------------------------
 
