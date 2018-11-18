@@ -1,3 +1,4 @@
+DROP VIEW IF EXISTS PokemonNameEvolutionsView;
 DROP TABLE IF EXISTS Encounters;
 DROP TABLE IF EXISTS Gym;
 DROP TABLE IF EXISTS PokemartSellsItems;
