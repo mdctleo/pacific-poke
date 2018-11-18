@@ -2656,6 +2656,17 @@ INSERT INTO `Types` (`TypeName`) VALUES
 ('Rock'),
 ('Water');
 
+CREATE OR REPLACE VIEW PokemonNameEvolutionsView AS SELECT
+    p1.PokemonName AS 'EvolveFromPokemonName',
+    p2.PokemonName AS 'EvolveToPokemonName',
+    PokemonEvolvesTo.AtLevel
+FROM
+    Pokemon p1,
+    Pokemon p2,
+    PokemonEvolvesTo
+WHERE
+    p1.PID = PokemonEvolvesTo.EvolveFromPID AND p2.PID = PokemonEvolvesTo.EvolveToPID;
+
 --
 -- Indexes for dumped tables
 --
