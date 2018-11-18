@@ -82,12 +82,8 @@ class App extends Component {
     this.convertToEndpoint(selection.value);
     console.log("ran convert to endpoint");
 
-    let method = requiredFormInfo[2]['method']
-    if (method && (method === 'DELETE')) {
-      // DELETE should use client side logic to render
-      // because backend doesn't return back the new table.
-      this.onButtonClick = (_) => this.convertToEndpoint(this.state.selected);
-    } else {
+    let method = requiredFormInfo[2]['method'];
+    if (method) {
       // Set our table to the data fetched by child component.
       this.onButtonClick = this.setState.bind(this);
     }
