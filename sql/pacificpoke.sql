@@ -605,7 +605,7 @@ INSERT INTO `Items` (`IID`, `ItemName`, `Effect`, `Cost`) VALUES
 (3, 'Great Ball', 'Capture medium level Pokemon', 600),
 (4, 'Poke Ball', 'Capture low-level Pokemon', 200),
 (5, 'Town Map', 'Map of the island. Shows your location', NULL),
-(6, 'Bicycle', 'Travel at double speed', 0),
+(6, 'Bicycle', 'Travel at double speed', NULL),
 (8, 'Safari Ball', 'Capture Pokemon in Safari Zone', NULL),
 (10, 'Moon Stone', 'Used to evolve Nidorino, Nidorina, Clefairy and Jigglypuff', NULL),
 (11, 'Antidote', 'Cure Poison status', 100),

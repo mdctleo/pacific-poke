@@ -31,6 +31,7 @@ INSERT INTO `Buildings` (`BuildingName`, `LocationName`) VALUES
 ('Cerulean City Pokemart', 'Cerulean City'),
 ('Cinnabar Island Gym', 'Cinnabar Island'),
 ('Cinnabar Island Pokemart', 'Cinnabar Island'),
+('Fake Building', 'Route 1'),
 ('Fuchsia City Gym', 'Fuchsia City'),
 ('Fuchsia City Pokemart', 'Fuchsia City'),
 ('Indigo Plateau Pokemart', 'Indigo Plateau'),

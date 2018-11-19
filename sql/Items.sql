@@ -30,7 +30,7 @@ INSERT INTO `Items` (`IID`, `ItemName`, `Effect`, `Cost`) VALUES
 (3, 'Great Ball', 'Capture medium level Pokemon', 600),
 (4, 'Poke Ball', 'Capture low-level Pokemon', 200),
 (5, 'Town Map', 'Map of the island. Shows your location', NULL),
-(6, 'Bicycle', 'Travel at double speed', 0),
+(6, 'Bicycle', 'Travel at double speed', NULL),
 (8, 'Safari Ball', 'Capture Pokemon in Safari Zone', NULL),
 (10, 'Moon Stone', 'Used to evolve Nidorino, Nidorina, Clefairy and Jigglypuff', NULL),
 (11, 'Antidote', 'Cure Poison status', 100),
@@ -95,7 +95,8 @@ INSERT INTO `Items` (`IID`, `ItemName`, `Effect`, `Cost`) VALUES
 (80, 'Ether', 'Restore 10 PP (one technique)', NULL),
 (81, 'Max Ether', 'Restores PP to one technique', NULL),
 (82, 'Elixir', 'Restores 10 PP (all techniques)', NULL),
-(83, 'Max Elixir', 'Restores PP to all techniques', NULL);
+(83, 'Max Elixir', 'Restores PP to all techniques', NULL),
+(604, 'Essential Item', 'Every Pokemart have one', 300);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
