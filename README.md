@@ -48,33 +48,24 @@ docker-compose logs --follow # tail the container logs
 docker-compose ps -a         # see the status of your containers
 ```
 
-##############
-Scripts for backend:
+### NPM Scripts
 
-1. use command "npm start"  to start server
-server will be started at 127.0.0.1:3000
+1. run `npm start`  to start the frontend on `localhost:3000` and backend on `localhost:3006`
 
-2. use "npm test" to run tests
+2. run `npm test` to run tests
 
-3. use "npm run-script build" to build stuff not sure if this step is necessary
+3. run `npm build` to build
 
-All the above should work with yarn (if you have that) e.g. yarn start, yarn test and yarn build 
-(no need run-script here)
+All the above should work with `yarn` (if you have that) e.g. `yarn start`, `yarn test`, and `yarn build`.
 
-##############
-Server end points note
+### Backend Server Endpoints
 
-There are a set of server end points (hopefully correct) in PokemonRouter.ts, they will handle request from front end
-and call the corresponding backend implementation
+There are a set of server end points in `PokemonRouter.ts`, they will handle requests from the frontend
+and call the corresponding backend implementation for the request.
 
-Each end point have a comment on the intended backend SQL implementation it is suppose to call
+Each end point have a comment on the intended backend SQL implementation it's supposed to call.
 
-You can test the first one /getPokemonWithName/:name
-by inputing 127.0.0.1:3000/getPokemonWithName/squirtle in your browser
+You can test the first one `/getPokemonWithName/:name`
+by inputing `127.0.0.1:3006/getPokemonWithName/squirtle` in your browser
 (make sure both your server and database are started!)
-
-###############
-
-
-
 
