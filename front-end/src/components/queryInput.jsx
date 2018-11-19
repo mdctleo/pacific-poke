@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, FormControl } from "react-bootstrap";
+import { Button, FormControl, Form, FormGroup } from "react-bootstrap";
 
 class QueryInput extends Component {
   constructor(props) {
@@ -47,21 +47,28 @@ class QueryInput extends Component {
 
   render() {
     return (
+
       <div>
-        {this.props.formLabels.map((formLabel, index) => {
-          return (
-            <FormControl
-              type="text"
-              key={this.props.selected + formLabel}
-              placeholder={formLabel}
-              onChange={event => this.handleChange(event, index)}
-            />
-          );
-        })}
-        {this.props.buttonLabel !== '' &&
-        <Button bsStyle="primary" onClick={this.handleClick}>
-          {this.props.buttonLabel}
-        </Button>}
+        <Form inline>
+            {this.props.formLabels.map((formLabel, index) => {
+              return (
+                <FormGroup controlId="formInlineName" className="input-box">
+                  <FormControl
+                  type="text"
+                  key={this.props.selected + formLabel}
+                  placeholder={formLabel}
+                  onChange={event => this.handleChange(event, index)}
+                  />
+                </FormGroup>
+              );
+            })}
+
+
+            {this.props.buttonLabel !== '' &&
+            <Button bsStyle="primary" onClick={this.handleClick}>
+              {this.props.buttonLabel}
+            </Button>}
+        </Form>
       </div>
     );
   }

@@ -4,7 +4,9 @@ import ReactTable from "react-table";
 import "react-table/react-table.css";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
+import "./styles.css";
 import QueryInput from "./components/queryInput.jsx";
+import {Grid, Row, Col} from "react-bootstrap";
 
 class App extends Component {
     constructor(props) {
@@ -152,28 +154,47 @@ class App extends Component {
         ];
 
         return (
-            <div>
-                <Dropdown
-                    className="interested"
-                    options={options}
-                    onChange={this._onSelect}
-                    value={this.state.selected}
-                    placeholder="Select an option"
-                />
-                <ReactTable
-                    columns={this.state.tableColumns}
-                    data={this.state.tableData}
-                    defaultPageSize={10}
-                    noDataText={"No more data to display."}
-                />
-                <QueryInput
-                    selected={this.state.selected}
-                    formLabels={this.state.formLabels}
-                    buttonLabel={this.state.buttonLabel}
-                    onButtonClick={this.onButtonClick}
-                    onButtonClickOptions={this.state.onButtonClickOptions}
-                />
-            </div>
+            <React.Fragment>
+                <Grid fluid className="grid-settings">
+                    <Row className="show-grid">
+                        <Col md={12} offset={{ md: 12 }}>
+                            <h1>Pacific Poke</h1>
+                        </Col>
+                    </Row>
+                    <Row className="show-grid query-input">
+                        <Col md={12} offset={{ md: 12 }}>
+                            <QueryInput
+                                className="input-box"
+                                selected={this.state.selected}
+                                formLabels={this.state.formLabels}
+                                buttonLabel={this.state.buttonLabel}
+                                onButtonClick={this.onButtonClick}
+                                onButtonClickOptions={this.state.onButtonClickOptions}
+                            />
+                        </Col>
+                    </Row>
+                    <Row className="show-grid">
+                          <Col xs={12} md={3}>
+                            <Dropdown
+                                    className="dropdown"
+                                    options={options}
+                                    onChange={this._onSelect}
+                                    value={this.state.selected}
+                                    placeholder="Select an option"
+                            />
+                         </Col>
+                        <Col xs={12} md={9}>
+                            <ReactTable
+                                className="table -striped -highlight"
+                                columns={this.state.tableColumns}
+                                data={this.state.tableData}
+                                defaultPageSize={10}
+                                noDataText={"No more data to display."}
+                            />
+                        </Col>
+                    </Row>
+                </Grid>
+            </React.Fragment>
         );
     }
 }
