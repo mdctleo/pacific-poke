@@ -5,7 +5,7 @@ let router = express.Router();
 let pokemonImpl = new PokemonImpl();
 
 /* GET home page. */
-router.get('/', function(req: any, res: any, next: any) {
+router.get('/', function (req: any, res: any, next: any) {
     res.render('index', { title: 'Express' });
 });
 
@@ -18,7 +18,7 @@ router.get('/all/:name', (req: any, res: any, next: any) => {
         .catch((err) => {
             res.send(err);
         });
-    }
+}
 );
 
 // SELECT * FROM Pokemon WHERE Pokemon.PokemonName = ?;
@@ -78,9 +78,9 @@ router.get('/getNumberOfPokemonWithType', (req: any, res: any, next: any) => {
 });
 
 // SELECT Moves.Effect FROM Moves WHERE Moves.MoveName = ?;
-router.get('/getMoveWithName/:name', (req: any, res: any, next: any) => {
+router.get('/getMoveWithMoveName/:name', (req: any, res: any, next: any) => {
     // TODO: replace with actual implementation
-    pokemonImpl.getMoveWithName(req.params.name)
+    pokemonImpl.getMoveWithMoveName(req.params.name)
         .then((result) => {
             res.status(200).send(result);
         })
@@ -148,8 +148,8 @@ router.put('/updateGymLeaderName', (req: any, res: any) => {
 
 // CREATE VIEW for Pokemon( Pokemon ID, Pokemon Name), PokemonEvolvesTo( Pokemon Evolve From, Pokemon Evolve To, At Level)
 router.get('/view', (req: any, res: any) => {
-   // no request parameters for this one, we passed all tuples from this temporary table
-   // to frontend, where it will be display in a table-like style;
+    // no request parameters for this one, we passed all tuples from this temporary table
+    // to frontend, where it will be display in a table-like style;
     pokemonImpl.getView()
         .then((result) => {
             res.status(200).send(result);
@@ -159,8 +159,8 @@ router.get('/view', (req: any, res: any) => {
         });
 });
 
-router.get('/getLocationsPokemonAppearsIn', (req: any, res: any) => {
-    pokemonImpl.getLocationsPokemonAppearsIn()
+router.get('/getNumberOfLocationsPokemonAppearsIn', (req: any, res: any) => {
+    pokemonImpl.getNumberOfLocationsPokemonAppearsIn()
         .then((result) => {
             res.status(200).send(result);
         })
