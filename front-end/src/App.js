@@ -158,7 +158,7 @@ class App extends Component {
                 <Grid fluid className="grid-settings">
                     <Row className="show-grid">
                         <Col md={12} offset={{ md: 12 }}>
-                            <h1>Pacific Poke</h1>
+                            <h1>Pacific Poke ✨</h1>
                         </Col>
                     </Row>
                     <Row className="show-grid query-input">
