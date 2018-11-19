@@ -112,7 +112,7 @@ export default class PokemonImpl {
           "JOIN " +
           "Buildings ON Buildings.BuildingName = PokemartSellsItems.BuildingName " +
           "WHERE " +
-          "Items.ItemName = '?';";
+          "Items.ItemName = ?;";
 
       this.con.query(sql, [itemName], (err: any, result: any) => {
         if (err) {
