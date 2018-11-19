@@ -116,7 +116,17 @@ INSERT INTO `PokemartSellsItems` (`IID`, `BuildingName`) VALUES
 (4, 'Viridian City Pokemart'),
 (11, 'Viridian City Pokemart'),
 (12, 'Viridian City Pokemart'),
-(15, 'Viridian City Pokemart');
+(15, 'Viridian City Pokemart'),
+(604, 'Celadon City Department Store'),
+(604, 'Cerulean City Pokemart'),
+(604, 'Cinnabar Island Pokemart'),
+(604, 'Fuchsia City Pokemart'),
+(604, 'Indigo Plateau Pokemart'),
+(604, 'Lavender Town Pokemart'),
+(604, 'Pewter City Pokemart'),
+(604, 'Saffron City Pokemart'),
+(604, 'Vermilion City Pokemart'),
+(604, 'Viridian City Pokemart');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

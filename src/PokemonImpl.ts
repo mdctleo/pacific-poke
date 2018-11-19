@@ -104,13 +104,15 @@ export default class PokemonImpl {
   public getPokemartsWithItemName(itemName: string): Promise<any> {
     return new Promise((resolve, reject) => {
       let sql = "SELECT " +
-        "PokemartSellsItems.BuildingName " +
-        "FROM " +
-        "Items " +
-        "JOIN " +
-        "PokemartSellsItems ON Items.IID = PokemartSellsItems.IID " +
-        "WHERE " +
-        "Items.ItemName = ?;";
+          "PokemartSellsItems.BuildingName, Buildings.LocationName " +
+          "FROM " +
+          "Items " +
+          "JOIN " +
+          "PokemartSellsItems ON Items.IID = PokemartSellsItems.IID " +
+          "JOIN " +
+          "Buildings ON Buildings.BuildingName = PokemartSellsItems.BuildingName " +
+          "WHERE " +
+          "Items.ItemName = ?;";
 
       this.con.query(sql, [itemName], (err: any, result: any) => {
         if (err) {

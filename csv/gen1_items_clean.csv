@@ -1,6 +1,6 @@
 011,Antidote,Cure Poison status,100
 014,Awakening,Cure Sleep status,200
-006,Bicycle,Travel at double speed,Voucher
+006,Bicycle,Travel at double speed,Voucher,NULL
 045,Bike Voucher,Redeem at Cerulean Bike Shop for free bike,NULL
 012,Burn Heal,Cure Burn status,250
 039,Calcium,Boost Special stat,9800
