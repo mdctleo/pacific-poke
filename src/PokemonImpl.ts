@@ -34,8 +34,7 @@ export default class PokemonImpl {
 
   public selectPokemonWithName(name: string): Promise<any> {
     return new Promise((resolve, reject) => {
-      let sql = "SELECT * " +
-        " FROM " + Database.TABLE_POKEMON + " WHERE " + Database.COLUMN_POKEMON_NAME + " = ?";
+      let sql = "SELECT * FROM Pokemon WHERE PokemonName = ?";
       this.con.query(sql, [name], (err: any, result: any) => {
         if (err) {
           console.log(err);
@@ -68,16 +67,7 @@ export default class PokemonImpl {
       });
     })
   }
-  // SELECT
-  // PokemonName
-  // FROM
-  // Pokemon
-  // JOIN
-  // PokemonHasTypes ON Pokemon.PID = PokemonHasTypes.PID
-  // JOIN
-  // PokemonHasMoves ON Pokemon.PID = PokemonHasMoves.PID
-  // WHERE
-  // PokemonHasTypes.TypeName = 'Fire' AND PokemonHasMoves.MoveName = 'Bite';
+
   public getPokemonWithTypeAndMove(type: string, move: string): Promise<any> {
     return new Promise((resolve, reject) => {
       let sql = "SELECT " +
@@ -170,11 +160,11 @@ export default class PokemonImpl {
   public getEvolvedFormWithPokemonName(name: string): Promise<any> {
     return new Promise((resolve, reject) => {
       let sql = `SELECT
-                            *
-                        FROM
-                            PokemonNameEvolutionsView
-                        WHERE
-                            PokemonNameEvolutionsView.EvolveFromPokemonName = ?;`
+                    *
+                FROM
+                    PokemonNameEvolutionsView
+                WHERE
+                    PokemonNameEvolutionsView.EvolveFromPokemonName = ?;`
       this.con.query(sql, [name], (err: any, result: any) => {
         if (err) {
           console.log(err);

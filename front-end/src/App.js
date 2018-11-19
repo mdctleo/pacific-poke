@@ -24,24 +24,8 @@ class App extends Component {
         };
     }
 
-    componentDidMount() {
-        this._onSelect({value: this.state.selected})
-    }
-
-    /*
-    callEndpoint() {
-      const url = `http://localhost:3006/all/${this.state.selected.value}`;
-      fetch(url, {
-        method: "GET"
-      })
-        .then(reponse => reponse.json())
-        .then(result => this.setState(result));
-    }
-    */
-
     getRequiredFormInfo(table) {
         switch (table) {
-            // Tested that the 3 modifiers work.
             case "insertItem":
                 return [["ID", "ItemName", "Effect", "Cost"], "Insert Item", {
                     method: 'POST',
@@ -82,27 +66,6 @@ class App extends Component {
         }
     }
 
-    _onSelect = selection => {
-        console.log(selection);
-        let requiredFormInfo = this.getRequiredFormInfo(selection.value);
-        this.setState({
-            selected: selection.value,
-            formLabels: requiredFormInfo[0],
-            buttonLabel: requiredFormInfo[1],
-            onButtonClickOptions: requiredFormInfo[2]
-        });
-        // put into a different method
-        console.log(selection.value);
-        this.convertToEndpoint(selection.value);
-        console.log("ran convert to endpoint");
-
-        let method = requiredFormInfo[2]['method'];
-
-        // Set our table to the data fetched by child component.
-        this.onButtonClick = this.setState.bind(this);
-
-    };
-
     getEndpointForDropdownSelection(selection) {
         switch (selection) {
             case 'insertItem':
@@ -127,6 +90,18 @@ class App extends Component {
         }
     }
 
+    _onSelect = selection => {
+        console.log('selected', selection);
+        let requiredFormInfo = this.getRequiredFormInfo(selection.value);
+        this.setState({
+            selected: selection.value,
+            formLabels: requiredFormInfo[0],
+            buttonLabel: requiredFormInfo[1],
+            onButtonClickOptions: requiredFormInfo[2]
+        });
+        this.convertToEndpoint(selection.value);
+    };
+
     convertToEndpoint(selection) {
         const url = `http://localhost:3006/${this.getEndpointForDropdownSelection(selection)}`;
         fetch(url, {
@@ -135,6 +110,10 @@ class App extends Component {
             .then(reponse => reponse.json())
             .then(result => this.setState(result))
             .catch(err => console.error(err));
+    }
+
+    componentDidMount() {
+        this._onSelect({value: this.state.selected})
     }
 
     render() {
@@ -168,7 +147,7 @@ class App extends Component {
                                 selected={this.state.selected}
                                 formLabels={this.state.formLabels}
                                 buttonLabel={this.state.buttonLabel}
-                                onButtonClick={this.onButtonClick}
+                                onButtonClick={this.setState.bind(this)}
                                 onButtonClickOptions={this.state.onButtonClickOptions}
                             />
                         </Col>
